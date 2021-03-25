@@ -2,15 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "subscriptions_605c746917621e0068070001_displayName": {
-            "value":"605c746917621e0068070001"
-        },
-        "subscriptions_605c746917621e0068070002_displayName": {
-            "value":"605c746917621e0068070002"
-        },
-        "users_1_lastName": {
-            "value":"lastname"
-        },
         "service_APIM_deployment_DEV_name": {
             "value": "APIM-deployment-DEV"
         },
