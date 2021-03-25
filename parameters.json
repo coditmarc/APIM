@@ -3,19 +3,19 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "subscriptions_605c746917621e0068070001_displayName": {
-            "value":"""
+            "value":"605c746917621e0068070001"
         },
         "subscriptions_605c746917621e0068070002_displayName": {
-            "value":"""
+            "value":"605c746917621e0068070002"
         },
         "users_1_lastName": {
-            "value":"""
+            "value":"lastname"
         },
         "service_APIM_deployment_DEV_name": {
-            "value":"""
+            "value": "APIM-deployment-DEV"
         },
         "components_APIM_deployment_DEV_externalid": {
-            "value":"""
+            "value":"/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourceGroups/APIM-deployment-DEV/providers/microsoft.insights/components/APIM-deployment-DEV"
         },
         "containerName": {
             "value": "github-action"
