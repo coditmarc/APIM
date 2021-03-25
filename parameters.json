@@ -1,0 +1,56 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptions_605c746917621e0068070001_displayName": {
+            "value":"""
+        },
+        "subscriptions_605c746917621e0068070002_displayName": {
+            "value":"""
+        },
+        "users_1_lastName": {
+            "value":"""
+        },
+        "service_APIM_deployment_DEV_name": {
+            "value":"""
+        },
+        "components_APIM_deployment_DEV_externalid": {
+            "value":"""
+        },
+        "containerName": {
+            "value": "github-action"
+        },
+        "region": {
+            "value": "westeurope"
+        },
+        "imageType": {
+            "value": "Public"
+        },
+        "imageName": {
+            "value": "whiteduck/sample-mvc"
+        },
+        "osType": {
+            "value": "Linux"
+        },
+        "numberCpuCores": {
+            "value": "1"
+        },
+        "memory": {
+            "value": "0.5"
+        },
+        "restartPolicy": {
+            "value": "OnFailure"
+        },
+        "ipAddressType": {
+            "value": "Public"
+        },
+        "ports": {
+            "value": [
+                {
+                    "port": "8080",
+                    "protocol": "TCP"
+                }
+            ]
+        }
+    }
+}
