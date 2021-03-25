@@ -29,13 +29,7 @@ jobs:
         uses: Azure/login@v1
         with:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-          creds: 
-          # Set this value to true to enable Azure PowerShell Login in addition to Az CLI login
-          enable-AzPSSession: # optional
-          # Name of the environment. Supported values are azurecloud, azurestack, azureusgovernment, azurechinacloud, azuregermancloud. Default being azurecloud
-          environment: # optional, default is azurecloud
-          # Set this value to true to enable support for accessing tenants without subscriptions
-          allow-no-subscriptions: # optional
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
     
       # Runs a single command using the runners shell
       - name: Run a one-line script
