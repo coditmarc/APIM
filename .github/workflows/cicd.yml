@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo ${{ secrets.AZURE_CREDENTIALS }}
+        run: echo dummy
 
       - name: Azure Login
         uses: Azure/login@v1
