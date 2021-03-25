@@ -33,7 +33,7 @@ jobs:
         id: changed_files
         uses: jackton1/find-changed-files@v1.1
         with:
-          files: "arm.json params.json"
+          files: "arm.json, params.json"
       - name: Perform action when files change.
         if: steps.changed_files.outputs.files_changed == 'true'
         run: |
