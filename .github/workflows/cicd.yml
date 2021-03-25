@@ -26,27 +26,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
-      - name: Change text file
-        run: |
-          echo "Modified" > new.txt
-      - name: Change file in directory
-        run: |
-          mkdir test_directory
-          echo "Changed" > test_directory/new.txt
-      - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v5.5
-        id: changed_files
-        with:
-          files: |
-             new.txt
-             test_directory
-             .(py|jpeg)$
-             .(sql)$
-             ^(mynewfile|custom)
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+      - run: |
+         for changed_file in ${{ steps.files.outputs.all }}; do
+           echo "Do something with this ${changed_file}."
+         done
       - name: Display changed files
         # if: steps.changed_files.outputs.files_changed == 'true'
         run: |
-          echo "Changed files: ${{ steps.changed_files.outputs.changed_files }}"  # Outputs: test_directory/new.txt
+          echo "Changed files: ${{ steps.files.outputs }}"  # Outputs: test_directory/new.txt
       - name: Perform action when files change.
         # if: steps.changed_files.outputs.files_changed == 'true'
         run: |
