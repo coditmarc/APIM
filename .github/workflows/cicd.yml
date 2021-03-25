@@ -33,9 +33,11 @@ jobs:
       - id: files
         uses: jitterbit/get-changed-files@v1
       - run: |
+         export list="arm.json params.json"
          for changed_file in ${{ steps.files.outputs.all }}; do
            echo "Do something with this ${changed_file}."
-           if [[ "${changed_file}" == "arm.json" ]]; then
+           if [[ $list =~ (^| )${changed_file}($| ) ]]; then
+             echo "Change detected!!"
              echo "deploymaster=true" >> $GITHUB_ENV
            fi
          done
