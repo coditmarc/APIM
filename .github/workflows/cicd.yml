@@ -26,26 +26,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
-      - name: Set the value
-        id: step_one
-        run: |
-          echo "deploymaster=false" >> $GITHUB_ENV
-      - id: files
-        uses: jitterbit/get-changed-files@v1
-      - run: |
-         export list="arm.json parameters.json"
-         for changed_file in ${{ steps.files.outputs.all }}; do
-           echo "Do something with this ${changed_file}."
-           if [[ $list =~ (^| )${changed_file}($| ) ]]; then
-             echo "Change detected!!"
-             echo "deploymaster=true" >> $GITHUB_ENV
-           fi
-         done
-      - name: Perform action when files change.
-        if: ${{ env.deploymaster }} == 'true'
-        run: |
-          echo "Do something when files have changed."
-
       - name: Azure Login
         uses: Azure/login@v1
         with:
@@ -65,7 +45,6 @@ jobs:
 
       - name: Deploy Azure Resource Manager (MASTER) Template
         uses: Azure/arm-deploy@v1
-        if: ${{ env.deploymaster }} == 'true'
         with:
           # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
           # scope: resourcegroup
@@ -82,26 +61,3 @@ jobs:
           template: ./arm.json
           parameters: ./parameters.json
               
-      - name: Deploy Azure Resource Manager (childs) Template
-        uses: Azure/arm-deploy@v1
-        with:
-          # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
-          # scope: resourcegroup
-          # Provide the name of a resource group, only required for resource Group deployments.
-          # Specify the path or URL to the Azure Resource Manager template.
-          # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
-          # deploymentMode: Incremental
-          # Specifies the name of the resource group deployment to create.
-          # deploymentName: # optional
-          # Supply deployment parameter values.
-          # parameters: # optional
-          subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
-          resourceGroupName: APIM-deployment-DEV
-          template: ./arm.json
-          parameters: ./parameters.json
-          
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
