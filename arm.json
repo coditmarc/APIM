@@ -32,14 +32,7 @@
                 "publisherEmail": "marc@fellman.nl",
                 "publisherName": "via-het-web.nl",
                 "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
-                "hostnameConfigurations": [
-                    {
-                        "type": "Proxy",
-                        "hostName": "apim-deployment-dev",
-                        "negotiateClientCertificate": false,
-                        "defaultSslBinding": true
-                    }
-                ],
+                "hostnameConfigurations": [],
                 "customProperties": {
                     "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "false",
                     "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "false",
