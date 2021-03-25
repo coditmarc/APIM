@@ -26,7 +26,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
-
+# .....................
+      # Make changes to files
+      # .....................
+      - name: Run Find changed files.
+        id: changed_files
+        uses: jackton1/find-changed-files@v1.1
+        with:
+          files: "arm.json params.json"
+      - name: Perform action when files change.
+        if: steps.changed_files.outputs.files_changed == 'true'
+        run: |
+          echo "Do something when files have changed."
       - name: Azure Login
         uses: Azure/login@v1
         with:
