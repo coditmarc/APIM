@@ -8,14 +8,8 @@
     "workspaces_apim_deployment_dev_externalid": {
       "value": "/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourcegroups/apim-deployment-dev/providers/microsoft.operationalinsights/workspaces/apim-deployment-dev"
     },
-    "subscriptions_605caffd0f87fd0059070001_displayName": {
-      "value": "starter-display"
-    },
-    "subscriptions_605caffe0f87fd0059070002_displayName": {
-      "value": "unlimited-display"
-    },
-    "users_1_lastName": {
-      "value": "Admin_lastname"
+    "Admin_lastName": {
+      "value": "Codit"
     }
   }
 }

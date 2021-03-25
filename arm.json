@@ -2,13 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "subscriptions_605caffd0f87fd0059070001_displayName": {
-            "type": "SecureString"
-        },
-        "subscriptions_605caffe0f87fd0059070002_displayName": {
-            "type": "SecureString"
-        },
-        "users_1_lastName": {
+        "Admin_lastName": {
             "type": "SecureString"
         },
         "service_APIM_deployment_DEV_name": {
@@ -923,7 +917,7 @@
                         "id": "marc@fellman.nl"
                     }
                 ],
-                "lastName": "[parameters('users_1_lastName')]"
+                "lastName": "[parameters('Admin_lastName')]"
             }
         },
         {
@@ -1290,40 +1284,6 @@
             "properties": {
                 "value": "<policies>\r\n  <inbound>\r\n    <base />\r\n    <cache-lookup vary-by-developer=\"false\" vary-by-developer-groups=\"false\">\r\n      <vary-by-header>Accept</vary-by-header>\r\n      <vary-by-header>Accept-Charset</vary-by-header>\r\n    </cache-lookup>\r\n    <rewrite-uri template=\"/resource\" />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n    <cache-store duration=\"3600\" />\r\n  </outbound>\r\n</policies>",
                 "format": "xml"
-            }
-        },
-        {
-            "type": "Microsoft.ApiManagement/service/subscriptions",
-            "apiVersion": "2020-12-01",
-            "name": "[concat(parameters('service_APIM_deployment_DEV_name'), '/605caffd0f87fd0059070001')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM_deployment_DEV_name'))]",
-                "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_APIM_deployment_DEV_name'), '1')]",
-                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM_deployment_DEV_name'), 'starter')]"
-            ],
-            "properties": {
-                "ownerId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_APIM_deployment_DEV_name'), '1')]",
-                "scope": "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM_deployment_DEV_name'), 'starter')]",
-                "state": "active",
-                "allowTracing": true,
-                "displayName": "[parameters('subscriptions_605caffd0f87fd0059070001_displayName')]"
-            }
-        },
-        {
-            "type": "Microsoft.ApiManagement/service/subscriptions",
-            "apiVersion": "2020-12-01",
-            "name": "[concat(parameters('service_APIM_deployment_DEV_name'), '/605caffe0f87fd0059070002')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM_deployment_DEV_name'))]",
-                "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_APIM_deployment_DEV_name'), '1')]",
-                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM_deployment_DEV_name'), 'unlimited')]"
-            ],
-            "properties": {
-                "ownerId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_APIM_deployment_DEV_name'), '1')]",
-                "scope": "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM_deployment_DEV_name'), 'unlimited')]",
-                "state": "active",
-                "allowTracing": true,
-                "displayName": "[parameters('subscriptions_605caffe0f87fd0059070002_displayName')]"
             }
         }
     ]
