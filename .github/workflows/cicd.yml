@@ -35,7 +35,7 @@ jobs:
       - run: |
          for changed_file in ${{ steps.files.outputs.all }}; do
            echo "Do something with this ${changed_file}."
-           if [[ "${changed_file}" -ne "arm.json" -o "${changed_file" -ne "params.json" ]]; then
+           if [[ "${changed_file}" == "arm.json" ]]; then
              echo "deploymaster=true" >> $GITHUB_ENV
            fi
          done
