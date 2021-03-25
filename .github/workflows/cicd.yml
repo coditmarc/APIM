@@ -34,9 +34,8 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - run: |
          for changed_file in ${{ steps.files.outputs.all }}; do
-           if ["${changed_file}" == "arm.json"||"${changed_file}" == "params.json"]
-           then
-               echo "deploymaster=true" >> $GITHUB_ENV
+           if [["${changed_file}" == "arm.json" -o "${changed_file}" == "params.json"]]; then
+             echo "deploymaster=true" >> $GITHUB_ENV
            fi
          done
       - name: Perform action when files change.
