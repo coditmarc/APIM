@@ -19,7 +19,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env: 
-      ResourceGroupName: github-action-arm-rg
+      ResourceGroupName: APIM-deployment-DEV
       ResourceGroupLocation: "westeurope"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -58,7 +58,7 @@ jobs:
           # Supply deployment parameter values.
           # parameters: # optional
           subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
-          resourceGroupName: github-action-arm-rg
+          resourceGroupName: APIM-deployment-DEV
           template: ./arm.json
           parameters: ./parameters.json
               
