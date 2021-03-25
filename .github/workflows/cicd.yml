@@ -33,7 +33,7 @@ jobs:
       - id: files
         uses: jitterbit/get-changed-files@v1
       - run: |
-         export list="arm.json params.json"
+         export list="arm.json parameters.json"
          for changed_file in ${{ steps.files.outputs.all }}; do
            echo "Do something with this ${changed_file}."
            if [[ $list =~ (^| )${changed_file}($| ) ]]; then
