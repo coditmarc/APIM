@@ -35,7 +35,7 @@
                 "hostnameConfigurations": [
                     {
                         "type": "Proxy",
-                        "hostName": "apim-deployment-dev.azure-api.net",
+                        "hostName": "apim-deployment-dev",
                         "negotiateClientCertificate": false,
                         "defaultSslBinding": true
                     }
