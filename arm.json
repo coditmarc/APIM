@@ -303,7 +303,7 @@
                 "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM_deployment_DEV_name'))]"
             ],
             "properties": {
-                "scope": "[concat(resourceId('Microsoft.ApiManagement/service', parameters('service_APIM_deployment_DEV_name')), '/')]",
+                "scope": "[concat(resourceId('Microsoft.ApiManagement/service', parameters('service_APIM_deployment_DEV_name')), '/apis')]",
                 "displayName": "Built-in all-access subscription",
                 "state": "active",
                 "allowTracing": true
