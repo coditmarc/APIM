@@ -26,18 +26,21 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "deploymaster=false" >> $GITHUB_ENV
       - id: files
         uses: jitterbit/get-changed-files@v1
       - run: |
          for changed_file in ${{ steps.files.outputs.all }}; do
-           echo "Do something with this ${changed_file}."
+           if [${changed_file} == "arm.json"||${changed_file} == "params.json"]
+           then
+               echo "deploymaster=true" >> $GITHUB_ENV
+           fi
          done
-      - name: Display changed files
-        # if: steps.changed_files.outputs.files_changed == 'true'
-        run: |
-          echo "Changed files: ${{ steps.files.outputs }}"  # Outputs: test_directory/new.txt
       - name: Perform action when files change.
-        # if: steps.changed_files.outputs.files_changed == 'true'
+        if: ${{ env.deploymaster }} == 'true'
         run: |
           echo "Do something when files have changed."
 
