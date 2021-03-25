@@ -60,12 +60,7 @@ jobs:
           subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
           resourceGroupName: github-action-arm-rg
           template: ./arm.json
-          parameters: |
-              subscriptions_605c746917621e0068070001_displayName |
-              subscriptions_605c746917621e0068070002_displayName |
-              users_1_lastName |
-              service_APIM_deployment_DEV_name |
-              components_APIM_deployment_DEV_externalid
+          parameters: ./parameters.json
               
           
       # Runs a set of commands using the runners shell
