@@ -1,12 +1,21 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "service_APIM_deployment_DEV_name": {
-            "value": "APIM-deployment-DEV"
-        },
-      "components_APIM_deployment_DEV_externalid": {
-        "value": "/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourcegroups/apim-deployment-dev/providers/microsoft.operationalinsights/workspaces/apim-deployment-dev"
-      }
+  "parameters": {
+    "service_APIM_deployment_DEV_name": {
+      "value": "NewAPIMInstanceMFE"
+    },
+    "components_APIM_deployment_DEV_externalid": {
+      "value": "/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourcegroups/apim-deployment-dev/providers/microsoft.operationalinsights/workspaces/apim-deployment-dev"
+    },
+    "subscriptions_605caffd0f87fd0059070001_displayName": {
+      "value": "starter-display"
+    },
+    "subscriptions_605caffe0f87fd0059070002_displayName": {
+      "value": "unlimited-display"
+    },
+    "users_1_lastName": {
+      "value": "Admin_lastname"
     }
+  }
 }
