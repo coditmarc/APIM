@@ -2,9 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "Admin_lastName": {
-            "type": "SecureString"
-        },
         "service_APIM_deployment_DEV_name": {
             "defaultValue": "APIM-deployment-DEV",
             "type": "String"
@@ -898,26 +895,6 @@
                         "title": "Developer portal URL"
                     }
                 ]
-            }
-        },
-        {
-            "type": "Microsoft.ApiManagement/service/users",
-            "apiVersion": "2020-12-01",
-            "name": "[concat(parameters('service_APIM_deployment_DEV_name'), '/1')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM_deployment_DEV_name'))]"
-            ],
-            "properties": {
-                "firstName": "Administrator",
-                "email": "marc@fellman.nl",
-                "state": "active",
-                "identities": [
-                    {
-                        "provider": "Azure",
-                        "id": "marc@fellman.nl"
-                    }
-                ],
-                "lastName": "[parameters('Admin_lastName')]"
             }
         },
         {
