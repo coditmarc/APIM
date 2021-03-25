@@ -15,18 +15,6 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-- name: Azure Login
-  uses: Azure/login@v1
-  with:
-    # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-    creds: 
-    # Set this value to true to enable Azure PowerShell Login in addition to Az CLI login
-    enable-AzPSSession: # optional
-    # Name of the environment. Supported values are azurecloud, azurestack, azureusgovernment, azurechinacloud, azuregermancloud. Default being azurecloud
-    environment: # optional, default is azurecloud
-    # Set this value to true to enable support for accessing tenants without subscriptions
-    allow-no-subscriptions: # optional
-    
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -37,6 +25,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Azure Login
+        uses: Azure/login@v1
+        with:
+          # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+          creds: 
+          # Set this value to true to enable Azure PowerShell Login in addition to Az CLI login
+          enable-AzPSSession: # optional
+          # Name of the environment. Supported values are azurecloud, azurestack, azureusgovernment, azurechinacloud, azuregermancloud. Default being azurecloud
+          environment: # optional, default is azurecloud
+          # Set this value to true to enable support for accessing tenants without subscriptions
+          allow-no-subscriptions: # optional
+    
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
