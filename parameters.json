@@ -14,8 +14,8 @@
         "service_APIM_deployment_DEV_name": {
             "value": "APIM-deployment-DEV"
         },
-        "components_APIM_deployment_DEV_externalid": {
-            "value":"/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourceGroups/APIM-deployment-DEV/providers/microsoft.insights/components/APIM-deployment-DEV"
-        }
+      "components_APIM_deployment_DEV_externalid": {
+        "value": "/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourcegroups/apim-deployment-dev/providers/microsoft.operationalinsights/workspaces/apim-deployment-dev"
+      }
     }
 }
