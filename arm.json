@@ -12,7 +12,7 @@
       },
       "APIManagementInstanceName": {
         "type": "string",
-        "defaultValue": "NewAPIMInstanceMFE"
+        "defaultValue": "NewAPIMInstanceMFEdefault"
       },
       "PublisherName": {
         "type": "string",
