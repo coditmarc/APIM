@@ -16,41 +16,6 @@
         },
         "components_APIM_deployment_DEV_externalid": {
             "value":"/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourceGroups/APIM-deployment-DEV/providers/microsoft.insights/components/APIM-deployment-DEV"
-        },
-        "containerName": {
-            "value": "github-action"
-        },
-        "region": {
-            "value": "westeurope"
-        },
-        "imageType": {
-            "value": "Public"
-        },
-        "imageName": {
-            "value": "whiteduck/sample-mvc"
-        },
-        "osType": {
-            "value": "Linux"
-        },
-        "numberCpuCores": {
-            "value": "1"
-        },
-        "memory": {
-            "value": "0.5"
-        },
-        "restartPolicy": {
-            "value": "OnFailure"
-        },
-        "ipAddressType": {
-            "value": "Public"
-        },
-        "ports": {
-            "value": [
-                {
-                    "port": "8080",
-                    "protocol": "TCP"
-                }
-            ]
         }
     }
 }
