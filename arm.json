@@ -1,7 +1,25 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+        "subscriptions_605c746917621e0068070001_displayName": {
+            "type": "SecureString"
+        },
+        "subscriptions_605c746917621e0068070002_displayName": {
+            "type": "SecureString"
+        },
+        "users_1_lastName": {
+            "type": "SecureString"
+        },
+        "service_APIM_deployment_DEV_name": {
+            "defaultValue": "APIM-deployment-DEV",
+            "type": "String"
+        },
+        "components_APIM_deployment_DEV_externalid": {
+            "defaultValue": "/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourceGroups/APIM-deployment-DEV/providers/microsoft.insights/components/APIM-deployment-DEV",
+            "type": "String"
+        }
+    },
     "variables": {},
     "resources": [
         {
