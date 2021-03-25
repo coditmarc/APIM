@@ -56,19 +56,19 @@ jobs:
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1
         with:
-          subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
           # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
-          scope: resourcegroup
+          # scope: resourcegroup
           # Provide the name of a resource group, only required for resource Group deployments.
-          resourceGroupName: github-action-arm-rg
           # Specify the path or URL to the Azure Resource Manager template.
-          templateLocation: ./arm.json
           # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
-          deploymentMode: Incremental
+          # deploymentMode: Incremental
           # Specifies the name of the resource group deployment to create.
           # deploymentName: # optional
           # Supply deployment parameter values.
           # parameters: # optional
+          subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
+          resourceGroupName: github-action-arm-rg
+          template: ./arm.json
           
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
