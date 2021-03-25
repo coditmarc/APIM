@@ -1,2 +1,2 @@
 # APIM
-API Management test (DEV)
+API Management Development plan
