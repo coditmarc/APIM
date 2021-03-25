@@ -31,6 +31,7 @@ jobs:
           echo "Modified" > new.txt
       - name: Change file in directory
         run: |
+          mkdir test_directory
           echo "Changed" > test_directory/new.txt
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v5.5
