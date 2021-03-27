@@ -76,7 +76,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "groups/groups.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'groups/groups.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -93,7 +94,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "/products/products.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'products/products.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -110,7 +112,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "/groupsuser/groupsuser.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'groupsuser/groupsuser.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -128,7 +131,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "/productsgroup/productsgroup.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'productsgroup/productsgroup.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -146,7 +150,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "subscribtions/subscribtions.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'subscribtions/subscribtions.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -164,7 +169,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('TemplatesStorageAccount'), '/policies.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'policies/policies.json', parameters('TemplatesStorageAccountSASToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -182,7 +187,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "apis/versionedAPIVersionSet.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'apis/versionedAPIVersionSet.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -199,7 +205,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "apis/versionedAPIv1.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'apis/versionedAPIv1.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -216,7 +223,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "apis/versionedAPIv1Operations.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'apis/versionedAPIv1Operations.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -233,7 +241,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "apis/versionedAPIv1Policies.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'apis/versionedAPIv1Policies.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -251,7 +260,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "apis/versionedAPIv2.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'apis/versionedAPIv2.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -268,7 +278,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "apis/versionedAPIv2Operations.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'apis/versionedAPIv2Operations.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -285,7 +296,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "apis/versionedAPIv2Policies.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'apis/versionedAPIv2Policies.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
@@ -303,7 +315,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "apis/products-apis.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), 'apis/products-apis.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
