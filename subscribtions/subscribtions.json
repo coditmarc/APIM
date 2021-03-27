@@ -16,7 +16,7 @@
       "properties": {
         "userId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('APIManagementInstanceName'), 'codit-care-codit-eu')]",
         "productId": "[resourceId('Microsoft.ApiManagement/service/products', parameters('APIManagementInstanceName'), 'Support')]",
-        "scope": "[concat(resourceId('Microsoft.ApiManagement/service', parameters('APIManagementInstanceName')), '/')]",
+        "scope": "[concat(resourceId('Microsoft.ApiManagement/service/products', parameters('APIManagementInstanceName')), 'starter')]",
         "displayName": "Support subscription",
         "state": "active"
       }
