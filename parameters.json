@@ -2,6 +2,12 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
   "parameters": {
+    "TemplatesStorageAccount": {
+      "value": "https://apimdeploymentdev.blob.core.windows.net/githubactiondeploy/"
+    },
+    "TemplatesStorageAccountSASToken": {
+      "value": "sp=r&st=2021-03-27T19:07:48Z&se=2022-03-28T03:07:48Z&spr=https&sv=2020-02-10&sr=c&sig=lz9xsEXE%2BRGP2WVw0374enhkXJi%2FlJmWmNzGDpMVB%2F4%3D"
+    },
     "APIManagementSku": {
       "value": "Developer"
     },
