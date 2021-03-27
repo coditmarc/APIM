@@ -4,11 +4,11 @@
   "parameters": {
     "TemplatesStorageAccount": {
       "type": "string",
-      "defaultValue": "https://apimdeploymentdev.blob.core.windows.net/templates/"
+      "defaultValue": "https://apimdeploymentdev.blob.core.windows.net/githubactiondeploy/"
     },
     "TemplatesStorageAccountSASToken": {
       "type": "string",
-      "defaultValue": "?sv=2020-02-10&ss=f&srt=sco&sp=rl&se=2021-03-28T02:46:27Z&st=2021-03-27T18:46:27Z&spr=https&sig=9eRVZ1X9MhuZnYOnRatkWqoUui2nlomMFeUZ3QWR5l4%3D"
+      "defaultValue": "?sp=rl&st=2021-03-27T18:53:55Z&se=2021-03-28T02:53:55Z&spr=https&sv=2020-02-10&sr=c&sig=w9clVpSCwu7d1yCrotyKmaBH2n7ERKlLVopbD7RmT%2BE%3D"
     },
     "APIManagementSku": {
       "type": "string",
