@@ -10,7 +10,7 @@
   "resources": [
     {
       "type": "Microsoft.ApiManagement/service/groups/users",
-      "name": "[concat(parameters('APIManagementInstanceName'), '/supportGroup/john-smith-contoso-com')]",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/supportGroup/codit-care-codit-eu')]",
       "apiVersion": "2017-03-01",
       "scale": null,
       "properties": {}
