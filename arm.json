@@ -30,7 +30,7 @@
             },
             "properties": {
                 "publisherEmail": "marc@fellman.nl",
-                "publisherName": "via-het-web.nl",
+                "publisherName": "API-world",
                 "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
                 "hostnameConfigurations": [],
                 "customProperties": {
