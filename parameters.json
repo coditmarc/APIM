@@ -1,15 +1,21 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-  "parameters": {
-    "Admin_lastName": {
-      "value": "Admin_lastname"
-    },
-    "service_APIM_deployment_DEV_name": {
-      "value": "NewAPIMInstanceMFE"
-    },
-    "workspaces_apim_deployment_dev_externalid": {
-      "value": "/subscriptions/c0598a98-e440-47c8-8dd0-62b2f76dc49c/resourcegroups/apim-deployment-dev/providers/microsoft.operationalinsights/workspaces/apim-deployment-dev"
-    }
+    "parameters": {
+      "APIManagementSku": {
+        "value": "Developer"
+      },
+      "APIManagementSkuCapacity": {
+        "value": "1"
+      },
+      "APIManagementInstanceName": {
+        "value": "NewAPIMInstanceMFE"
+      },
+      "PublisherName": {
+        "value": "Marc Fellman"
+      },
+      "PublisherEmail": {
+        "value": "marc@fellman.nl"
+      }
   }
 }
