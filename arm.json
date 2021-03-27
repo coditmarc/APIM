@@ -2,6 +2,14 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "TemplatesStorageAccount": {
+      "type": "string",
+      "defaultValue": "https://apimdeploymentdev.blob.core.windows.net/templates/"
+    },
+    "TemplatesStorageAccountSASToken": {
+      "type": "string",
+      "defaultValue": "?sv=2020-02-10&ss=f&srt=sco&sp=rl&se=2021-03-28T02:46:27Z&st=2021-03-27T18:46:27Z&spr=https&sig=9eRVZ1X9MhuZnYOnRatkWqoUui2nlomMFeUZ3QWR5l4%3D"
+    },
     "APIManagementSku": {
       "type": "string",
       "defaultValue": "Developer"
@@ -31,7 +39,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "/instance/instance.json"
+          "uri": "[concat(parameters('TemplatesStorageAccount'), '/instance/instance.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "APIManagementSku": { "value": "[parameters('APIManagementSku')]" },
