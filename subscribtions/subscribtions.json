@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementInstanceName": {
+      "type": "string",
+      "defaultValue": "MyAPIManagementInstance"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service/subscriptions",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/B9508F6AA4544741A8DDD8DC889494C4')]",
+      "apiVersion": "2019-01-01",
+      "scale": null,
+      "properties": {
+        "userId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('APIManagementInstanceName'), 'codit-care-codit-eu')]",
+        "productId": "[resourceId('Microsoft.ApiManagement/service/products', parameters('APIManagementInstanceName'), 'Support')]",
+        "displayName": "Support subscription",
+        "state": "active"
+      }
+    }
+  ]
+} 

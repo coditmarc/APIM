@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementInstanceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "name": "[concat(parameters('APIManagementInstanceName'), '/versionsetversionedapi')]",
+      "type": "Microsoft.ApiManagement/service/api-version-sets",
+      "apiVersion": "2018-01-01",
+      "properties": {
+        "description": "Version set for versioned API blog post ",
+        "versionQueryName": "api-version",
+        "displayName": "Versioned API",
+        "versioningScheme": "query"
+      }
+    }
+  ]
+}

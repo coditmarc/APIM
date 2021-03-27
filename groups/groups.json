@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementInstanceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service/groups",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/supportGroup')]",
+      "apiVersion": "2020-12-01",
+      "scale": null,
+      "properties": {
+        "displayName": "supportGroup",
+        "description": "Group containing all developers and services from Codit who will be consuming our APIs",
+        "type": "custom",
+        "externalId": null
+      }
+    }
+  ]
+}

@@ -1,61 +1,309 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "APIManagementSku": {
-        "type": "string",
-        "defaultValue": "Developer"
-      },
-      "APIManagementSkuCapacity": {
-        "type": "string",
-        "defaultValue": "1"
-      },
-      "APIManagementInstanceName": {
-        "type": "string",
-        "defaultValue": "NewAPIMInstanceMFEdefault"
-      },
-      "PublisherName": {
-        "type": "string",
-        "defaultValue": "Marc Fellman"
-      },
-      "PublisherEmail": {
-        "type": "string",
-        "defaultValue": "marc@fellman.nl"
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementSku": {
+      "type": "string",
+      "defaultValue": "Developer"
+    },
+    "APIManagementSkuCapacity": {
+      "type": "string",
+      "defaultValue": "1"
+    },
+    "APIManagementInstanceName": {
+      "type": "string",
+      "defaultValue": "NewAPIMInstanceMFEdefault"
+    },
+    "PublisherName": {
+      "type": "string",
+      "defaultValue": "Marc Fellman"
+    },
+    "PublisherEmail": {
+      "type": "string",
+      "defaultValue": "marc@fellman.nl"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2020-10-01",
+      "name": "instanceTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "instance/instance.json"
+        },
+        "parameters": {
+          "APIManagementSku": { "value": "[parameters('APIManagementSku')]" },
+          "APIManagementSkuCapacity": { "value": "[parameters('APIManagementSkuCapacity')]" },
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" },
+          "PublisherName": { "value": "[parameters('PublisherName')]" },
+          "PublisherEmail": { "value": "[parameters('PublisherEmail')]" }
+        }
       }
     },
-    "variables": {},
-    "resources": [
-      {
-        "type": "Microsoft.ApiManagement/service",
-        "name": "[parameters('APIManagementInstanceName')]",
-        "apiVersion": "2017-03-01",
-        "properties": {
-          "publisherEmail": "[parameters('PublisherEmail')]",
-          "publisherName": "[parameters('PublisherName')]",
-          "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
-          "hostnameConfigurations": [],
-          "additionalLocations": null,
-          "virtualNetworkConfiguration": null,
-          "customProperties": {
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False"
-          },
-          "virtualNetworkType": "None"
+    {
+      "apiVersion": "2020-10-01",
+      "name": "usersTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "users/users.json"
         },
-        "resources": [],
-        "sku": {
-          "name": "[parameters('APIManagementSku')]",
-          "capacity": "[parameters('APIManagementSkuCapacity')]"
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'instanceTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "groupsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "groups/groups.json"
         },
-        "location": "[resourceGroup().location]",
-        "tags": {},
-        "scale": null
-      }
-    ],
-    "outputs": {}
-  }
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'instanceTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "productsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "/products/products.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'instanceTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "groupsUsersTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "/groupsuser/groupsuser.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'groupsTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'usersTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "productsGroupsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "/productsgroup/productsgroup.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'groupsTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "subscriptionsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "subscribtions/subscribtions.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'usersTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "policiesTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('TemplatesStorageAccount'), '/policies.json', parameters('TemplatesStorageAccountSASToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "versionedAPIVersionSetTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "apis/versionedAPIVersionSet.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'instanceTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "versionedAPIv1Template",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "apis/versionedAPIv1.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIVersionSetTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "versionedAPIv1OperationsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "apis/versionedAPIv1Operations.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIv1Template')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "versionedAPIv1PoliciesTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "apis/versionedAPIv1Policies.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIv1Template')]",
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIv1OperationsTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "versionedAPIv2Template",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "apis/versionedAPIv2.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIVersionSetTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "versionedAPIv2OperationsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "apis/versionedAPIv2Operations.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIv2Template')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "versionedAPIv2PoliciesTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "apis/versionedAPIv2Policies.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIv2Template')]",
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIv2OperationsTemplate')]"
+      ]
+    },
+    {
+      "apiVersion": "2020-10-01",
+      "name": "productsAPIsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "apis/products-apis.json"
+        },
+        "parameters": {
+          "APIManagementInstanceName": { "value": "[parameters('APIManagementInstanceName')]" }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIv1Template')]",
+        "[resourceId('Microsoft.Resources/deployments', 'versionedAPIv2Template')]"
+      ]
+    }
+  ]
+}

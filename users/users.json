@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementInstanceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service/users",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/codit-care-codit-eu')]",
+      "apiVersion": "2017-03-01",
+      "scale": null,
+      "properties": {
+        "firstName": "Codit",
+        "lastName": "Care",
+        "email": "marc.fellman@codit.eu",
+        "state": "active",
+        "note": "Developer working for Codit, one of the consumers of our APIs",
+        "confirmation": "invite"
+      }
+    }
+  ]
+}

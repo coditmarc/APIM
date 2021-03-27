@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementInstanceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service/products",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/Support')]",
+      "apiVersion": "2020-12-01",
+      "scale": null,
+      "properties": {
+        "displayName": "Support",
+        "description": "Product with API's that need to be accesable for Support",
+        "terms": null,
+        "subscriptionRequired": true,
+        "approvalRequired": true,
+        "subscriptionsLimit": null,
+        "state": "published"
+      }
+    }
+  ]
+}

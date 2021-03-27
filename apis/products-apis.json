@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementInstanceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/contosoproduct/versioned-api')]",
+      "apiVersion": "2017-03-01",
+      "scale": null,
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/contosoproduct/versioned-api-v2')]",
+      "apiVersion": "2017-03-01",
+      "scale": null,
+      "properties": {}
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementInstanceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/versioned-api/getMetrics')]",
+      "apiVersion": "2017-03-01",
+      "scale": null,
+      "properties": {
+        "displayName": "Get basic metrics",
+        "method": "GET",
+        "urlTemplate": "/metrics",
+        "templateParameters": [],
+        "description": "Some basic metrics for the entire directory.\nJust stunning numbers to put on a front page and are intended purely for WoW effect :)\n",
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": []
+          }
+        ],
+        "policies": null
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/versioned-api/listAPIs')]",
+      "apiVersion": "2017-03-01",
+      "scale": null,
+      "properties": {
+        "displayName": "List all APIs",
+        "method": "GET",
+        "urlTemplate": "/list",
+        "templateParameters": [],
+        "description": "List all APIs in the directory.\nReturns links to OpenAPI specification for each API in the directory.\nIf API exist in multiple versions `preferred` one is explicitly marked.\n\nSome basic info from OpenAPI spec is cached inside each object.\nThis allows to generate some simple views without need to fetch OpenAPI spec for each API.\n",
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": []
+          }
+        ],
+        "policies": null
+      }
+    }
+  ]
+}

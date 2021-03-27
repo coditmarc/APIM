@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "APIManagementInstanceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service/apis",
+      "name": "[concat(parameters('APIManagementInstanceName'), '/versioned-api-v2')]",
+      "apiVersion": "2017-03-01",
+      "scale": null,
+      "properties": {
+        "displayName": "Versioned API",
+        "apiRevision": "1",
+        "description": "Wikipedia for Web APIs. Repository of API specs in OpenAPI(fka Swagger) 2.0 format.\n\n**Warning**: If you want to be notified about changes in advance please subscribe to our [Gitter channel](https://gitter.im/APIs-guru/api-models).\n\nClient sample: [[Demo]](https://apis.guru/simple-ui) [[Repo]](https://github.com/APIs-guru/simple-ui)\n",
+        "serviceUrl": "https://api.apis.guru/v2/",
+        "path": "versioned-api",
+        "protocols": [
+          "https"
+        ],
+        "authenticationSettings": null,
+        "subscriptionKeyParameterNames": null,
+        "apiVersion": "v2",
+        "apiVersionSetId": "[concat(resourceId('Microsoft.ApiManagement/service', parameters('APIManagementInstanceName')), '/api-version-sets/versionsetversionedapi')]"
+      }
+    }
+  ]
+}
